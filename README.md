@@ -1,5 +1,6 @@
 # Customer-Information-Management
-Servlet+JSP+SQL Server+intellij idea编写的客户信息管理系统
+## 项目介绍
+使用Servlet+JSP+SQL Server+intellij idea编写的客户信息管理系统
 
 ## 相关工具
 在项目文件中有相关的说明文档，请自行下载查看
