@@ -12,7 +12,7 @@
 
 ## 效果预览
 - 显示客户信息
-![显示客户信息](https://github.com/2427595858/Customer-Information-Management/blob/master/img/显示客户信息.png)
+![显示客户信息](https://github.com/2427595858/Customer-Information-Management/blob/master/img/显示客户列表.png)
 - 添加客户信息
 ![添加客户信息](https://github.com/2427595858/Customer-Information-Management/blob/master/img/添加客户信息.png)
 - 编辑客户信息
