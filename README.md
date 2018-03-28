@@ -10,4 +10,13 @@
 - 实现了查询，添加，删除和搜索功能
 - 实现了分页查看功能
 
+## 效果预览
+- 显示客户信息
+![显示客户信息](https://github.com/2427595858/Customer-Information-Management/img/显示客户列表.png)
+- 添加客户信息
+![添加客户信息](https://github.com/2427595858/Customer-Information-Management/img/添加客户信息.png)
+- 编辑客户信息
+![编辑客户信息](https://github.com/2427595858/Customer-Information-Management/img/编辑客户信息.png)
+- 搜索相关用户
+![搜索相关客户](https://github.com/2427595858/Customer-Information-Management/img/搜索相关客户.png)
 
