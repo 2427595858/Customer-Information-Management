@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<c3p0-config>
+    <default-config>
+        <!-- 数据库驱动，用户名，密码等基本配置 -->
+        <property name="jdbcUrl">jdbc:sqlserver://localhost:1433;databaseName=t_customer</property>
+        <property name="driverClass">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+        <property name="user">mysql</property>
+        <property name="password">123456</property>
+
+        <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数。Default: 3 -->
+        <property name="acquireIncrement">3</property>
+        <!-- 初始化时获取的连接数，取值应在minPoolSize与maxPoolSize之间。Default: 3 -->
+        <property name="initialPoolSize">10</property>
+        <!-- 连接池中保留的最小连接数。-->
+        <property name="minPoolSize">2</property>
+        <!-- 连接池中保留的最大连接数。-->
+        <property name="maxPoolSize">10</property>
+    </default-config>
+</c3p0-config>

@@ -1,0 +1,36 @@
+在web/WEB-INF/lib下引入相应的jar包
+
+c3p0.jar
+mchange-commons.java.jar
+commons-beanutils.jar
+commons-dbutils.jar
+commons-logging.jar
+小工具itcast-tools.jar
+jstl.jar
+mysql-connector-java.jar	//连接mysql的JDBC驱动
+sqljdbc42.jar			//连接sqlserver的jdbc驱动（使用哪个数据库就选择哪个驱动）
+
+注：
+1.c3p0.jar：数据连接池的包
+
+2.mchange-commons.java.jar：
+    c3p0数据库连接池的辅助包，没有这个包系统启动的时候会报classnotfoundexception，这是c3p0-0.9.2版本后分离出来的包，0.9.1的时候还是一个包就搞定的
+
+3.commons-beanutils.jar：
+    BeanUtils最核心的好处在于：我们在编码时，并不需要知道我们处理的JavaBeans具体是什么类型，有哪些属性，这些信息是可以动态获取的，甚至我们都可以不必去关心事实上是否存在这样一个具体的JavaBean类。我们只需要知道有一个JavaBean的实例，我们需要从中取得某个属性，设定某个属性的值，或者仅仅是需要一个属性表。要做到这些，依靠Sun提供的JavaBean规范似乎找不到一个很直接的方式，除非硬编码，将getXxxx()和setXxxx()直接写进我们的程序。但是这样就大大增加了代码的复杂度、耦合性和维护成本。还好Commons BeanUtils对这个问题提供了一种优雅的解决方案。
+
+4.commons-dbutils.jar：
+    运用dbutil.jar包一键封装表单数据到bean对象中
+    利用dbutils.jar包简化对数据库增、删、改、查的代码
+    总之就是简化了jdbc相关操作
+
+5.commons-logging.jar：
+    commons-logging是Apache commons类库中的一员。Apache commons类库是一个通用的类库，提供了基础的功能，比如说commons-fileupload，commons-httpclient，commons-io，commons-codes等。
+commons-logging能够选择使用Log4j还是JDK Logging，但是他不依赖Log4j，JDK Logging的API。如果项目的classpath中包含了log4j的类库，就会使用log4j，否则就使用JDK Logging。使用commons-logging能够灵活的选择使用那些日志方式，而且不需要修改源代码。（详细使用请自行百度）
+
+6.jstl.jar
+    JSP 标准标签库(JSP Standard Tag Library，JSTL)是一个实现 Web应用程序中常见的通用功能的定制标记库集，这些功能包括迭代和条件判断、数据管理格式化、XML 操作以及数据库访问。
+    优点：（1）、 在应用程序服务器之间提供了一致的接口，最大程度地提高了WEB应用在各应用服务器之间的移植。（2）、 简化了JSP和WEB应用程序的开发。
+
+7.小工具itcast-tools.jar
+    生成验证码要用到的..
