@@ -6,46 +6,108 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>客户列表</title>
+    <script type="text/javascript" src="<%= request.getContextPath()%>/plugin/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/plugin/layui/css/layui.css">
+    <script>
+        //注意啊，使用layui.js时，要引入layer弹出层时要写下面三句话啊
+        layui.use('layer',function () {
+            var $=layui.jquery;
+            var layer=layui.layer;
+            //编辑客户信息
+            /*
+            $(document).on("click","#edit",function(){
+                layer.open({
+                    title:'编辑客户信息',
+                    type:1,
+                    content:'/edit.jsp',
+                    skin:'layui-layer-molv'
+                })
+            });
+            */
+            //删除客户信息
+            /*$(document).on("click","#delete",function(){
+                layer.open({
+                    title:'删除客户信息',
+                    content:'',
+                    skin:'layui-layer-molv',
+                    btn:['确定'],
+                    yes:function(){
+                        layer.msg('已删除');
+                    }
+                })
+            })*/
+        })
+
+    </script>
 </head>
 <body>
     <!-- 建表 -->
-    <h3 align="center">客户列表</h3>
-    <table border="1" width="70%" align="center">
-        <tr>
-            <th>姓名</th>
-            <th>性别</th>
-            <th>电话</th>
-            <th>邮箱</th>
-            <th>个人描述</th>
-            <th>操作</th>
-        </tr>
-        <!-- JSP中使用JSTL的c标签 -->
-        <c:forEach items="${pb.beanList}" var="cstm">
+    <!--<h3 align="center">客户列表</h3>-->
+    <table class="layui-table" lay-size="sm">
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+            <col width="150">
+        </colgroup>
+        <thead>
             <tr>
-                <td>${cstm.name}</td>
-                <td>${cstm.gender}</td>
-                <td>${cstm.phone}</td>
-                <td>${cstm.email}</td>
-                <td>${cstm.description}</td>
-                <td>
-                    <a href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">编辑</a>
-                    <a href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">删除</a>
-                </td>
+                <th>姓名</th>
+                <th>性别</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>个人描述</th>
+                <th>操作</th>
             </tr>
-        </c:forEach>
+        </thead>
+        <tbody>
+            <!-- JSP中使用JSTL的c标签 -->
+            <c:forEach items="${pb.beanList}" var="cstm">
+                <tr>
+                    <td>${cstm.name}</td>
+                    <td>${cstm.gender}</td>
+                    <td>${cstm.phone}</td>
+                    <td>${cstm.email}</td>
+                    <td>${cstm.description}</td>
+                    <td>
+                        <a href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">
+                            <button class="layui-btn layui-btn-radius layui-btn-sm" id="edit">编辑</button>
+                        </a>
+                        <a href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">
+                            <button class="layui-btn-danger layui-btn-radius layui-btn-sm" id="delete">删除</button>
+                        </a>
+                        <!--
+                        <a href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">编辑</a>
+                        <a href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">删除</a>
+                        -->
+                    </td>
+                </tr>
+            </c:forEach>
+        </tbody>
+
     </table>
     <br/>
 
     <%-- 分页 --%>
     <div style="text-align: center">
         第${pb.pageNum}页/共${pb.totalPage}页
-        <a href="${pb.url}&pageNum=1">首页</a>
+        <a href="${pb.url}&pageNum=1">
+            <button class="layui-btn">
+                首页
+            </button>
+        </a>
         <c:if test="${pb.pageNum>1}">
-            <a href="${pb.url}&pageNum=${pb.pageNum-1}">上一页</a>
+            <a href="${pb.url}&pageNum=${pb.pageNum-1}">
+                <button class="layui-btn layui-btn-sm">
+                    <i class="layui-icon"> &#xe603;</i>
+                </button>
+            </a>
         </c:if>
 
         <%-- 计算页数，赋给变量begin和end --%>
@@ -77,19 +139,33 @@
         <c:forEach var="i" begin="${begin}" end="${end}">
             <c:choose>
                 <c:when test="${i eq pb.pageNum}">  <%-- 在方框中显示当前页码 --%>
-                    [${i}]
+                    <button class="layui-btn layui-btn-sm layui-btn-disabled">
+                        ${i}
+                    </button>
                 </c:when>
                 <c:otherwise>
-                    <a href="${pb.url}&pageNum=${i}">[${i}]</a>
+                    <a href="${pb.url}&pageNum=${i}">
+                        <button class="layui-btn layui-btn-sm">
+                            ${i}
+                        </button>
+                    </a>
                 </c:otherwise>
             </c:choose>
         </c:forEach>
 
         <%-- 给出下一页以及尾页链接 --%>
         <c:if test="${pb.pageNum<pb.totalPage}">
-            <a href="${pb.url}&pageNum=${pb.pageNum+1}">下一页</a>
+            <a href="${pb.url}&pageNum=${pb.pageNum+1}">
+                <button class="layui-btn layui-btn-sm">
+                    <i class="layui-icon"> &#xe602;</i>
+                </button>
+            </a>
         </c:if>
-        <a href="${pb.url}&pageNum=${pb.totalPage}">尾页</a>
+        <a href="${pb.url}&pageNum=${pb.totalPage}">
+            <button class="layui-btn">
+                尾页
+            </button>
+        </a>
     </div>
 </body>
 </html>

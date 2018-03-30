@@ -10,47 +10,65 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="text/javascript" src="<%= request.getContextPath()%>/plugin/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/plugin/layui/css/layui.css">
+
 </head>
 <body>
-    <h3 align="center">高级搜索</h3>
-    <form action="<c:url value='/CustomerServlet' />" method="get">
+    <!--<h3 align="center">高级搜索</h3>-->
+    <form class="layui-form" action="<c:url value='/CustomerServlet' />" method="get">
         <input type="hidden" name="method" value="query">
-        <table border="0" align="center" width="40%" style="margin-left: 100px">
-            <tr>
-                <td width="100px">客户姓名</td>
-                <td width="40%">
-                    <input type="text" name="name">
-                </td>
-            </tr>
-            <tr>
-                <td>客户性别</td>
-                <td>
-                    <select name="gender">
-                        <option value="">==请选择性别==</option>
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>电话</td>
-                <td>
-                    <input type="text" name="phone">
-                </td>
-            </tr>
-            <tr>
-                <td>邮箱</td>
-                <td>
-                    <input type="text" name="email">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit" value="搜索">
-                    <input type="reset" value="重置">
-                </td>
-            </tr>
-        </table>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="name"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <select name="gender" lay-verify="">
+                    <option value="">==请选择性别==</option>
+                    <option value="male">male</option>
+                    <option value="female">female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="phone"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="email" id="email"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">个人描述</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" name="description"></textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" type="submit">搜索</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
     </form>
+    <script>
+        layui.use('form', function () {
+            var form = layui.form;
+            form.render('select');
+        });
+    </script>
 </body>
 </html>
