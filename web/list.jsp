@@ -12,38 +12,8 @@
     <title>客户列表</title>
     <script type="text/javascript" src="<%= request.getContextPath()%>/plugin/layui/layui.all.js"></script>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/plugin/layui/css/layui.css">
-    <script>
-        //注意啊，使用layui.js时，要引入layer弹出层时要写下面三句话啊
-        layui.use('layer',function () {
-            var $=layui.jquery;
-            var layer=layui.layer;
-            //编辑客户信息
-            /*
-            $(document).on("click","#edit",function(){
-                layer.open({
-                    title:'编辑客户信息',
-                    type:1,
-                    content:'/edit.jsp',
-                    skin:'layui-layer-molv'
-                })
-            });
-            */
-            //删除客户信息
-            /*$(document).on("click","#delete",function(){
-                layer.open({
-                    title:'删除客户信息',
-                    content:'',
-                    skin:'layui-layer-molv',
-                    btn:['确定'],
-                    yes:function(){
-                        layer.msg('已删除');
-                    }
-                })
-            })*/
-        })
-
-    </script>
 </head>
+
 <body>
     <!-- 建表 -->
     <!--<h3 align="center">客户列表</h3>-->
@@ -76,11 +46,11 @@
                     <td>${cstm.email}</td>
                     <td>${cstm.description}</td>
                     <td>
-                        <a href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">
-                            <button class="layui-btn layui-btn-radius layui-btn-sm" id="edit">编辑</button>
+                        <a class="layui-btn layui-btn-radius layui-btn-sm" href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">
+                            编辑
                         </a>
-                        <a href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">
-                            <button class="layui-btn-danger layui-btn-radius layui-btn-sm" id="delete">删除</button>
+                        <a class="layui-btn-danger layui-btn-radius layui-btn-sm" href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">
+                            删除
                         </a>
                         <!--
                         <a href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">编辑</a>
