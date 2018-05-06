@@ -21,4 +21,6 @@
 - 搜索相关用户
 ![高级搜索](https://github.com/2427595858/Customer-Information-Management/blob/master/img/高级搜索.png)
 
+如果觉得不错的话，请给个star吧。
+
 
