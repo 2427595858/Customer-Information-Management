@@ -49,13 +49,9 @@
                         <a class="layui-btn layui-btn-radius layui-btn-sm" href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">
                             编辑
                         </a>
-                        <a class="layui-btn-danger layui-btn-radius layui-btn-sm" href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">
+                        <a class="layui-btn layui-btn-danger layui-btn-radius layui-btn-sm" href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">
                             删除
                         </a>
-                        <!--
-                        <a href="<c:url value='/CustomerServlet?method=preEdit&id=${cstm.id}'/>">编辑</a>
-                        <a href="<c:url value='/CustomerServlet?method=delete&id=${cstm.id}'/>">删除</a>
-                        -->
                     </td>
                 </tr>
             </c:forEach>

@@ -10,70 +10,65 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="text/javascript" src="<%= request.getContextPath()%>/plugin/layui/layui.all.js"></script>
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/plugin/layui/css/layui.css">
+
 </head>
+
 <body>
-    <h3 align="center">编辑客户</h3>
-    <form action="<c:url value="/CustomerServlet"/> " method="post">
+    <!--<h3 align="center">编辑客户</h3>-->
+    <form class="layui-form" action="<c:url value="/CustomerServlet"/> " method="post">
         <input type="hidden" name="method" value="edit">
         <input type="hidden" name="id" value="${customer.id}">
-        <table border="0" align="center" width="40%" style="margin-left: 100px">
-            <tr>
-                <td width="100px">客户名称</td>
-                <td width="40%">
-                    <input type="text" name="name" value="${customer.name}"/>
-                </td>
-                <td align="left">
-                    <label id="nameError" class="error">&nbsp;</label>
-                </td>
-            </tr>
-            <tr>
-                <td>客户性别</td>
-                <td>
-                    <input type="radio" name="gender" value="male" id="male" <c:if test="${customer.gender eq 'male'}">checked="checked"</c:if>/>
-                    <label for="male">男</label>
-                    <input type="radio" name="gender" value="female" id="female" <c:if test="${customer.gender eq 'female'}">checked="checked"</c:if> />
-                    <label for="female">女</label>
-                </td>
-                <td>
-                    <label id="genderError"class="error">&nbsp;</label>
-                </td>
-            </tr>
-            <tr>
-                <td>手机</td>
-                <td>
-                    <input type="text" name="phone" id="phone" value="${customer.phone}"/>
-                </td>
-                <td>
-                    <label id="phoneError"class="error">&nbsp;</label>
-                </td>
-            </tr>
-            <tr>
-                <td>邮箱</td>
-                <td>
-                    <input type="text" name="email" id="email" value="${customer.email}"/>
-                </td>
-                <td>
-                    <label id="emailError"class="error">&nbsp;</label>
-                </td>
-            </tr>
-            <tr>
-                <td>描述</td>
-                <td>
-                    <textarea rows="5" cols="30" name="description">${customer.description}</textarea>
-                </td>
-                <td>
-                    <label id="discriptionError"class="error">&nbsp;</label>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <input type="submit" name="submit" value="编辑客户"/>
-                    <input type="reset" name="reset"/>
-                </td>
-            </tr>
-        </table>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="name" required lay-verify="required" value="${customer.name}"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-block">
+                <input type="radio" name="gender" title="male" value="male" <c:if test="${customer.gender eq 'male'}">checked</c:if>/>
+                <input type="radio" name="gender" title="female" value="female" <c:if test="${customer.gender eq 'female'}">checked</c:if> />
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">手机</label>
+            <div class="layui-input-inline">
+            <input class="layui-input" type="text" name="phone" lay-verify="phone" value="${customer.phone}"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="email" id="email" lay-verify="email" value="${customer.email}"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">个人描述</label>
+            <div class="layui-input-block">
+                <textarea class="layui-textarea" name="description">${customer.description}</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" type="submit">编辑客户</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
     </form>
 
+    <script>
+        layui.use('form', function () {
+            var form = layui.form;
+            form.render('radio');
+        });
+    </script>
 </body>
 </html>
