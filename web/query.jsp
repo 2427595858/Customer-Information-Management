@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>高级搜索</title>
     <script type="text/javascript" src="<%= request.getContextPath()%>/plugin/layui/layui.all.js"></script>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/plugin/layui/css/layui.css">
 
