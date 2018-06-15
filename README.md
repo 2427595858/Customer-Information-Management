@@ -21,6 +21,8 @@
 - 搜索相关用户
 ![高级搜索](https://github.com/2427595858/Customer-Information-Management/blob/master/img/高级搜索.png)
 
+在此项目基础上，使用ssm+maven进行改造，有兴趣的话可以看一下。项目地址：[改造的客户信息管理系统](https://github.com/2427595858/customer-maven/blob/master/README.md)
+
 如果觉得不错的话，请给个star吧。
 
 
